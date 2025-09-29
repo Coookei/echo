@@ -1,31 +1,32 @@
-# shadcn/ui monorepo template
+# Echo Monorepo Experiment
 
-This template is for creating a monorepo with shadcn/ui.
+This is an experimental project for learning how to build a clean, modular monorepo powered by Next.js sites and TurboRepo. The goal is to explore how apps, shared packages, and UI modules can live together with a tidy project structure to provide a smooth developer experience.
 
-## Usage
+## What we're trying out
+
+- Next.js apps that share code via internal packages
+- Reusable UI modules inspired by the shadcn/ui approach
+- Consistent TurboRepo pipelines for linting, formatting, and testing across the workspace
+
+## Getting started
 
 ```bash
-pnpm dlx shadcn@latest init
+pnpm install
+pnpm dev
 ```
 
-## Adding components
+## Adding UI components
 
-To add components to your app, run the following command at the root of your `web` app:
+Run component generators from the root of the `web` app to keep shared pieces in `packages/ui`:
 
 ```bash
 pnpm dlx shadcn@latest add button -c apps/web
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
+## Useful commands
 
-## Tailwind
-
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
-
-## Using components
-
-To use the components in your app, import them from the `ui` package.
-
-```tsx
-import { Button } from "@workspace/ui/components/button"
+```bash
+pnpm dev      # runs all apps and modules through TurboRepo with hot reloading
+pnpm build    # build every package/app in the workspace
+pnpm lint     # run lint checks across the repo with shared configs
 ```
